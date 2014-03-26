@@ -1,0 +1,75 @@
+<!Doctype html>
+<html>
+<head>
+    <title>utils test case</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../src/utils.js"></script>
+    <script type="text/javascript">
+
+        // ========== Type ========== //
+
+        var element, result;
+        // CheckType
+        element = "element";
+        result = Utils.Type.CheckType(element, 'string');
+        console.log(result);
+
+        // IsObject
+        element = {
+            name : "element"
+        };
+        result = Utils.Type.IsObject(element);
+        console.log(result);
+
+        // IsString
+        element = "element";
+        result = Utils.Type.IsString(element);
+        console.log(result);
+
+        // IsBoolean
+        element = false;
+        result = Utils.Type.IsBoolean(element);
+        console.log(result);
+
+        // IsNumber
+        element = 0;
+        result = Utils.Type.IsNumber(element);
+        console.log(result);
+
+        // IsNumber
+        element = false;
+        result = Utils.Type.IsNumber(element);
+        console.log(result);
+        
+
+        // ========== String ========== //
+
+        element = "  abc 123  ";
+        result = Utils.String.LTrim(element);
+        console.log("|" + result + "|");
+
+        result = Utils.String.RTrim(element);
+        console.log("|" + result + "|");
+
+        result = Utils.String.Trim(element);
+        console.log("|" + result + "|");
+
+        result = Utils.String.ReplaceAll(element, " ", "-");
+        console.log(result);
+
+
+        // ========== Random ========== //
+
+        console.log(Utils.Random.GetRandomNum(1, 9999));
+        console.log(Utils.Random.GetRandomId());
+
+
+        // ========== Broswer ========== //
+        
+        console.log(Utils.Broswer.IsFirefox + "|" + Utils.Broswer.IsWebkit + "|" + Utils.Broswer.IsOpera + "|" + Utils.Broswer.IsIe  )
+
+    </script>
+</head>
+<body>
+</body>
+</html>
