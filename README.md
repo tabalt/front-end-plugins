@@ -1,7 +1,7 @@
-front-end 
+front-end plugins
 ==================
 
-there are many front-end plugins
+there are so many front-end plugins
 
 
 | Plugin Name | Srouce | Last Release Version | 
