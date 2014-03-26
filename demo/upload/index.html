@@ -1,0 +1,70 @@
+<!Doctype html>
+<html>
+<head>
+    <title>utils test case</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="../../src/utils.js"></script>
+    <script type="text/javascript" src="../../src/upload.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#upImage1").upload({
+                width : 15, 
+                height : 15, 
+                name : 'upfile1',
+                uploadUrl : 'upload.php',//上传地址
+                type : 'image/gif,image/jpeg,image/png,image/jpg,image/bmp',//选择的类型
+                btnBackgroundImage : 'images/grape-editor-image.png', //上传按钮背景图片
+                btnStyleClass : '', //上传按钮样式
+                target: 'grape-upload-target-' + Utils.Random.GetRandomId(),
+                startCallback : function(){
+                    console.log("start upload");
+                },
+                successCallback : function(){
+                    console.log("upload success");
+                },
+                errorCallback : function(){
+                    console.log("upload error");
+                },
+            });
+            
+            $("#upImage2").upload({
+                width : 15, 
+                height : 15, 
+                name : 'upfile2',
+                uploadUrl : 'upload.php?result=success',//上传地址
+                type : 'image/gif,image/jpeg,image/png,image/jpg,image/bmp',//选择的类型
+                btnBackgroundImage : 'images/grape-editor-image.png', //上传按钮背景图片
+                btnStyleClass : '', //上传按钮样式
+                target: 'grape-upload-target-' + Utils.Random.GetRandomId(),
+                startCallback : function(){
+                    console.log("start upload");
+                },
+                successCallback : function(){
+                    console.log("upload success");
+                },
+                errorCallback : function(){
+                    console.log("upload error");
+                },
+            });
+            
+        });
+    </script>
+    <style type="text/css">
+        .uploadBox{
+            margin:100px auto; 
+            width:500px; 
+            height:100px; 
+            border:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="uploadBox">
+        <div id="upImage1"></div>
+    </div>
+    <div class="uploadBox">
+        <div id="upImage2"></div>
+    </div>
+</body>
+</html>
