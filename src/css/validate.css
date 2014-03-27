@@ -1,0 +1,8 @@
+.form-lable{ width:100px; display:block; float:left; text-align:right;}
+.tips{ margin-left:10px; font-size:12px;color:#000; }   
+.input-default{ width:200px; height:25px; background:#fff; border:1px solid #ABADB3; outline:none; }
+.input-focus{ background:#F4FFD4; border:1px solid #A5C760; }   
+.input-error{ background:#FFCCCC; border:1px solid #FF0000; }
+.input-success{ background:#FFFFFF; border:1px solid #ABADB3;}
+.tips-error{ color:red; }
+.tips-success{ color:green;}
