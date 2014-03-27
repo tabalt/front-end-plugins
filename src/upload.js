@@ -14,10 +14,10 @@
         width : 100, 
         height : 30, 
         name : 'upfile',
-        uploadUrl : '',//上传地址
-        type : 'image/gif,image/jpeg,image/png,image/jpg,image/bmp',//选择的类型
-        btnBackgroundImage : 'upload_btn_img.png', //上传按钮背景图片
-        btnStyleClass : '', //上传按钮样式
+        uploadUrl : '',// upload url
+        type : 'image/gif,image/jpeg,image/png,image/jpg,image/bmp',// file type
+        btnBackgroundImage : 'upload_btn_img.png', //button background image 
+        btnStyleClass : '', //button style class 
         target: 'grape-upload-target-' + Utils.Random.GetRandomId(),
         startCallback : null,
         successCallback : null,
@@ -36,7 +36,6 @@
             + '<input class="grape-upload-button ' + settings.btnStyleClass +'" style="background:url('+ settings.btnBackgroundImage +') no-repeat; width:' + settings.width + 'px;height:' + settings.height 
             + 'px; /* filter: alpha(opacity=0);opacity:0;*/ border:none; cursor:pointer;" type="button" value="" />'
             + '</form></div>';
-
         var uploadHtmlForIe = '<div class="' + settings.btnStyleClass +'" style="background:url('+ settings.btnBackgroundImage +') no-repeat; width:' + settings.width 
             + 'px;height:' + settings.height  + 'px;" >'
             + '<form class="grape-upload-form" method="post" enctype="multipart/form-data" '
@@ -57,25 +56,25 @@
         uploader.find(".grape-upload-file").change(function(){
             if($(this).val()) {
 
-                //上传开始 回调
+                //upload start callback
                 settings.startCallback && settings.startCallback();
             
-                //生成一个隐藏iframe，并设置form的target为该iframe，模拟ajax效果
+                //crete a hidden ifreme simulate ajax
                 var iframe = $('<iframe id="' + settings.target + '" name="' + settings.target + '" style="display: none"></iframe>');
                 var form = $(this).parent()[0];
                 iframe.appendTo($('body'));
 
-                //设置 上传完毕iframe onload事件
+                //set iframe onload event to deal upload result
                 iframe.load(function(){
-                    //获取上传结果
+                    //get upload result
                     var response = this.contentWindow.document.body.innerHTML;
                     response = Utils.String.ReplaceAll(response, '&amp;', '&');
                     form.reset();
                     iframe.remove();
-                    //清除引用
+                    //clear variable iframe's reference
                     iframe = null; 
 
-                    //解析上传结果
+                    //parse upload result to json object
                     var responseData = {
                         status : 0,
                         info : '',
@@ -87,17 +86,17 @@
 
                     }
 
-                    //处理上传结果
+                    //deal upload result
                     if(responseData && responseData.status == 1) {
-                        //上传成功  回调
+                        //upload success callback
                         settings.successCallback && settings.successCallback(responseData);
                     } else {
-                        //上传失败  回调
+                        //upload error callback
                         settings.errorCallback && settings.errorCallback(responseData);
                     }
                 });
 
-                //提交表单上传文件
+                //submit form to upload file
                 form.submit();
             }
         });
