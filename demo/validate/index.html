@@ -1,0 +1,162 @@
+<!Doctype html>
+<html>
+<head>
+    <title>form validate test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="../../src/utils.js"></script>
+    <script type="text/javascript" src="../../src/validate.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#myform").validate({
+                ruleList : [{
+                    elementId : 'username',
+                    defaultTips : '以字母开头，4-20位字母和数字组合',
+                    successTips : '输入正确！',
+                    allowEmpty : false,
+                    emptyTips : '请输入用户名！',
+                    minLength : 4,
+                    maxLength : 20,
+                    lengthTips : '长度必须在{%min}到{%max}之间',
+                    type : 'alphanum',
+                    typeTips : '只能输入字母和数字，并且以字母开头'
+                },{
+                    elementId : 'nickname',
+                    defaultTips : '可选，2-20位',
+                    successTips : '输入正确！',
+                    allowEmpty : true,
+                    emptyTips : '请输入昵称！',
+                    minLength : 2,
+                    maxLength : 20,
+                    lengthTips : '长度必须在{%min}到{%max}之间',
+                },{
+                    elementId : 'password',
+                    defaultTips : '6-32位字母、数字、特殊字符组合',
+                    allowEmpty : false,
+                    emptyTips : '请输入密码!',
+                    successTips : '输入正确！',
+                    minLength : 6,
+                    maxLength : 32,
+                    lengthTips : '长度必须在{%min}到{%max}之间'
+                },{
+                    elementId : 'repassword',
+                    defaultTips : '6-32位字母、数字、特殊字符组合',
+                    allowEmpty : false,
+                    emptyTips : '请输入重复密码!',
+                    successTips : '输入正确！',
+                    minLength : 6,
+                    maxLength : 32,
+                    lengthTips : '长度必须在{%min}到{%max}之间',
+                    match : 'password',
+                    matchTips : '两次密码不匹配!'
+                },{
+                    elementId : 'qq',
+                    defaultTips : '5-10位QQ号码',
+                    allowEmpty : true,
+                    type : 'qq',
+                    successTips : '输入正确！',
+                    typeTips : '格式不正确,请输入5-10位QQ号码'
+                },{
+                    elementId : 'email',
+                    defaultTips : '填写常用的Email，用于找回密码',
+                    allowEmpty : false,
+                    emptyTips : '请输入Email！',
+                    successTips : '输入正确！',
+                    type : 'email',
+                    typeTips : '格式不正确,请输入正确的Email！'
+                },{
+                    elementId : 'name',
+                    defaultTips : '填写您的中文姓名',
+                    allowEmpty : false,
+                    emptyTips : '请输入姓名！',
+                    regex : /[\u4e00-\u9fa5]{2}/,
+                    regexTips : '请输入两位以上的中文'
+                },{
+                    elementId : 'idnum',
+                    defaultTips : '填写身份证号码',
+                    allowEmpty : false,
+                    emptyTips : '请输入身份证号码！',
+                    limitLength : 18,
+                    limitTips : '身份证号码为18位！'
+                },{
+                    elementId : 'vcode',
+                    defaultTips : '填写4位验证码',
+                    allowEmpty : false,
+                    emptyTips : '请输入4位验证码！',
+                    limitLength : 4,
+                    limitTips : '验证码必须为4位！'
+                }],
+                successCallback : function(form){
+                    return true;
+                },
+                errorCallback : function(form){
+
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        body{font-size:14px; }
+        p{ margin:0;padding:0; margin-bottom:10px; height:25px; line-height:25px; }
+        
+        .form-lable{ width:100px; display:block; float:left; text-align:right;}
+        .tips{ margin-left:10px; font-size:12px;color:#000; }   
+        .input-default{ width:200px; height:25px; background:#fff; border:1px solid #ABADB3; outline:none; }
+        .input-focus{ background:#F4FFD4; border:1px solid #A5C760; }   
+        .input-error{ background:#FFCCCC; border:1px solid #FF0000; }
+        .input-success{ background:#FFFFFF; border:1px solid #ABADB3;}
+        .tips-error{ color:red; }
+        .tips-success{ color:green;}
+    </style>
+</head>
+<body>
+    <form name="myform" id="myform" method="get">
+    <p>
+        <span class="form-lable">用户名：</span>
+        <input type="text" value="" class="input-default"  id="username" name="username" />
+        <span class="tips" id="username-tips"></span>
+    </p>
+    <p>
+        <span class="form-lable">昵称：</span>
+        <input type="text" value="" class="input-default"  id="nickname" name="nickname" />
+        <span class="tips" id="nickname-tips"></span>
+    </p>
+    <p>
+        <span class="form-lable">密码：</span>
+        <input type="password" value="" class="input-default" id="password" name="password" />
+        <span  class="tips" id="password-tips"></span>
+    </p>
+    <p>
+        <span class="form-lable">重复密码：</span>
+        <input type="password" value=""  class="input-default" id="repassword" name="repassword" />
+        <span class="tips" id="repassword-tips"></span>
+    </p>
+    <p>
+        <span class="form-lable">QQ：</span>
+        <input type="text" value="" class="input-default" id="qq" name="qq" />
+        <span class="tips" id="qq-tips"></span>
+    </p>
+    <p>
+        <span class="form-lable">电子邮箱：</span>
+        <input type="text" value="" class="input-default" id="email" name="email" />
+        <span class="tips" id="email-tips"></span>
+    </p>    
+    <p>
+        <span class="form-lable">姓名：</span>
+        <input type="text" value="" class="input-default" id="name" name="name" />
+        <span class="tips" id="name-tips"></span>
+    </p>
+    <p>
+        <span class="form-lable">身份证号：</span>
+        <input type="text" value="" class="input-default" id="idnum" name="idnum" />
+        <span class="tips" id="idnum-tips"></span>
+    </p>
+    <p>
+        <span class="form-lable">验证码：</span>
+        <input type="text" value="" class="input-default" style="width:50px;" id="vcode" name="vcode" />
+        <span class="tips" id="vcode-tips"></span>
+    </p>
+    <p style="padding-left:100px; padding-top:10px;"><input type="submit" value="提交" id="submit" /></p>
+</form>
+</body>
+</html>
